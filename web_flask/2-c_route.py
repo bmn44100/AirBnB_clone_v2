@@ -19,5 +19,6 @@ def display_flask():
 def display_c_is_fun(text):
     return 'C %s' % text.replace("_", " ")
 
+
 if __name__ == "__main__":
     flaskapp.run(host="0.0.0.0")

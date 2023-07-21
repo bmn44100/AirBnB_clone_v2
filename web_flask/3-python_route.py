@@ -29,5 +29,6 @@ def display_python_is():
 def display_python_is_magic(text='is_cool'):
     return 'Python %s' % text.replace("_", " ")
 
+
 if __name__ == "__main__":
     flaskapp.run(host="0.0.0.0")

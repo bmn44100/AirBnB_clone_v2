@@ -39,5 +39,6 @@ def display_int_only(n):
 def display_template(n=None):
     return render_template('5-number.html', n=n)
 
+
 if __name__ == "__main__":
     flaskapp.run(host="0.0.0.0")

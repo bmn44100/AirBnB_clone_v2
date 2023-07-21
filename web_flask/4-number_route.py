@@ -34,5 +34,6 @@ def display_python_is_magic(text='is_cool'):
 def display_int_only(n):
     return '%d is a number' % n
 
+
 if __name__ == "__main__":
     flaskapp.run(host="0.0.0.0")
