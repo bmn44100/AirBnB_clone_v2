@@ -1,13 +1,13 @@
 #!/usr/bin/python3
-# a script that starts a Flask web flaskapplication
+# a script that starts a Flask web application
 
 from flask import Flask
-flaskapp = Flask(__name__)
+app = Flask(__name__)
 
 
-@flaskapp.route('/', strict_slashes=False)
+@app.route('/', strict_slashes=False)
 def display_hello_flask():
     return 'Hello HBNB!'
 
 if __name__ == "__main__":
-    flaskapp.run(host="0.0.0.0")
+    app.run(host="0.0.0.0")
