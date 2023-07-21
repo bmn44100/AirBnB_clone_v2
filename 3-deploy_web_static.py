@@ -29,6 +29,7 @@ def do_pack():
         print(e)
         return None
 
+
 def do_deploy(archive_path):
     """
     deploy web_static archive on your servers: xx-web-01 and xx-web-02
@@ -50,8 +51,9 @@ def do_deploy(archive_path):
         run("rm -rf /data/web_static/current")
         run("ln -s {} /data/web_static/current".format(uncompress_static))
         return True
-    except:
+    except BaseException:
         return False
+
 
 def deploy():
     """

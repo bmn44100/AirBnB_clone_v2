@@ -16,11 +16,11 @@ def do_pack():
     try:
         date = datetime.now()
         static_archive = "web_static_{}{}{}{}{}{}.tgz".\
-                    format(date.year, date.month, date.day,
-                           date.hour, date.minute, date.second)
+            format(date.year, date.month, date.day,
+                   date.hour, date.minute, date.second)
         local("mkdir -p versions")
         local("tar -cvzf versions/{} web_static".format(static_archive))
         print("web_static packed: versions/{} -> {}".
               format(static_archive, os.path.getsize(static_archive)))
-    except:
+    except BaseException:
         return None
