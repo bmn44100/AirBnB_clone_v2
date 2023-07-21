@@ -34,9 +34,9 @@ class DBStorage:
         host = getenv('HBNB_MYSQL_HOST')
         database = getenv('HBNB_MYSQL_DB')
         my_sqldb = "mysql+mysqldb://{}:{}@{}/{}".format(user,
-                                                      password,
-                                                      host,
-                                                      database)
+                                                        password,
+                                                        host,
+                                                        database)
         self.__engine = create_engine('{}'.format(my_sqldb),
                                       pool_pre_ping=True)
         if getenv('HBNB_ENV') == 'test':
@@ -59,13 +59,13 @@ class DBStorage:
                 try:
                     self.__session.query(models.classes[key]).all()
                     db_query.append(models.classes[key])
-                except:
+                except BaseException:
                     continue
             for classes in db_query:
-                    results = self.__session.query(classes).all()
-                    for row in results:
-                        key = row.__class__.__name__ + '.' + row.id
-                        newsql_dict[key] = row
+                results = self.__session.query(classes).all()
+                for row in results:
+                    key = row.__class__.__name__ + '.' + row.id
+                    newsql_dict[key] = row
         return newsql_dict
 
     def new(self, obj):
@@ -95,7 +95,7 @@ class DBStorage:
         create all tables in the database
         (feature of SQLAlchemy) andcreate the current
         database session (self.__session) from the engine
-        (self.__engine) by using a sessionmaker  
+        (self.__engine) by using a sessionmaker
         """
         Base.metadata.create_all(self.__engine)
         session_factory = sessionmaker(bind=self.__engine,

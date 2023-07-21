@@ -12,7 +12,6 @@ from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 Base = declarative_base()
 
 
-
 class BaseModel:
     """A base class for all hbnb models"""
     id = Column(String(60), nullable=False, primary_key=True)
@@ -60,11 +59,13 @@ class BaseModel:
         if '_sa_instance_state' in up_dict:
             del up_dict['_sa_instance_state']
         up_dict['__class__'] = self.__class__.__name__
-        up_dict['updated_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        up_dict['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        up_dict['updated_at'] = self.updated_at.strftime(
+            "%Y-%m-%dT%H:%M:%S.%f")
+        up_dict['created_at'] = self.created_at.strftime(
+            "%Y-%m-%dT%H:%M:%S.%f")
 
         return (up_dict)
-    
+
     def delete(self):
         """
         public instance method: def delete(self): to delete the
@@ -72,4 +73,3 @@ class BaseModel:
         """
         from models import storage
         models.storage.delete(self)
-        

@@ -12,12 +12,13 @@ place_amenity = Table("place_amenity", Base.metadata,
                           "places.id"), primary_key=True, nullable=False),
                       Column("amenity_id", String(60), ForeignKey(
                           "amenities.id"), primary_key=True,
-                             nullable=False))
+                          nullable=False), mysql_charset="latin1")
 
 
 class Place(BaseModel, Base):
     """ A place to stay """
     __tablename__ = 'places'
+    __table_args__ = ({'mysql_default_charset': 'latin1'})
     if getenv('HBNB_TYPE_STORAGE') == 'db':
         city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
         user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
@@ -68,7 +69,7 @@ class Place(BaseModel, Base):
 
         @amenities.setter
         def amenities(self, obj=None):
-            if type(obj) == Amenity:
+            if isinstance(obj, Amenity):
                 self.amenity_ids.append(obj.id)
             else:
                 pass
